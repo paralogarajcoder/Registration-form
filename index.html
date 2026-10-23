@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registretion</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .nameerror,.emailerror,.phoneerror{
+            color: red;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+         <form >
+            <input type="text" placeholder="Name" id="name">
+            <span class="nameError" id="ne">Name must contains only letters</span>
+            <br>
+            <input type="text" placeholder="Email" id="email">
+            <span class="emailError" id="ee">plese provide valid email address</span><br>
+            <input type="text" placeholder="Phone" id="phone">
+            <span class="phoneError" id="pe">Phone number must contain only 10 digits</span><br>
+            <input type="submit" id="submit">
+         </form>
+    </div>
+    
+
+
+
+    <script >
+
+        var submit=document.getElementById("submit")
+
+        submit.addEventListener("click",function(){
+            event.preventDefault()
+             
+            
+
+            var nameRegex = /^[a-zA-Z]+$/
+            var emailRegex = /^[a-zA-Z0-9]+@gmail\.com/
+            var phoneRegex = /^\d{10}$/
+
+            var name=document.getElementById("name")
+            var email=document.getElementById("email")
+            var phone=document.getElementById("phone")
+
+            var ne=document.getElementById("ne")
+            var ee=document.getElementById("ee")
+            var pe=document.getElementById("pe")
+
+            var valid=true
+
+            if(nameRegex.test(name.value) == false)
+            {
+                document.querySelector(".nameError").style.display="inline"
+                valid=false
+            }
+            else{
+                document.querySelector(".nameError").style.display="none"
+            }
+            if(emailRegex.test(email.value) == false)
+            {
+                document.querySelector(".emailError").style.display="inline"
+                valid=false
+            }
+            else{
+                document.querySelector(".emailError").style.display="none"
+            }
+            if(phoneRegex.test(phone.value) == false)
+            {
+                document.querySelector(".phoneError").style.display="inline"
+                valid=false
+            }
+            else{
+                document.querySelector(".phoneError").style.display="none"
+            }
+            if(valid==true){
+                alert("From submitted successfully")
+            }
+
+            
+        })
+
+    </script>
+</body>
+</html>
